@@ -1,26 +1,57 @@
 import * as S from './booking-modal.styled';
 import { ReactComponent as IconClose } from '../../../../assets/img/icon-close.svg';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormInputType } from '../../../../types';
 
 
-const BookingModal = () => (
+type BookingModalProps = {
+  onClose: (closeStatus: boolean) => void;
+  onSubmit: (formInput: FormInputType) => void;
+}
+
+const BookingModal = (props: BookingModalProps) => {
+
+  const {onClose} = props;
+  const {onSubmit} = props
+  const closeStatus = false
+  const [formInput, setFormInput] = useState({
+    name: '',
+    phone: '',
+    peopleCount: '',
+    isLegal: true
+  });
+
+  const handleInputChange = (evt: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+    const {name, value} = evt.target;
+    setFormInput({...formInput, [name]: value,});
+  };
+
+  const handleCloseBtnClick = () => {
+    onClose(closeStatus)
+  };
+
+  return(
   <S.BlockLayer>
     <S.Modal>
-      <S.ModalCloseBtn>
+      <S.ModalCloseBtn onClick={handleCloseBtnClick}>
         <IconClose width="16" height="16" />
         <S.ModalCloseLabel>Закрыть окно</S.ModalCloseLabel>
       </S.ModalCloseBtn>
       <S.ModalTitle>Оставить заявку</S.ModalTitle>
-      <S.BookingForm
-        action="https://echo.htmlacademy.ru"
+      <S.BookingForm onSubmit = {(evt: FormEvent<HTMLFormElement>) => {
+        evt.preventDefault();
+        onSubmit(formInput);
+        onClose(closeStatus);
+    }}
+        action="#"
         method="post"
         id="booking-form"
       >
         <S.BookingField>
           <S.BookingLabel htmlFor="booking-name">Ваше Имя</S.BookingLabel>
-          <S.BookingInput
+          <S.BookingInput onChange={handleInputChange}
             type="text"
-            id="booking-name"
-            name="booking-name"
+            name="name"
             placeholder="Имя"
             required
           />
@@ -29,11 +60,13 @@ const BookingModal = () => (
           <S.BookingLabel htmlFor="booking-phone">
             Контактный телефон
           </S.BookingLabel>
-          <S.BookingInput
+          <S.BookingInput onChange={handleInputChange}
             type="tel"
-            id="booking-phone"
-            name="booking-phone"
+            name="phone"
             placeholder="Телефон"
+            minLength={10}
+            maxLength={10}
+            pattern ='^[0-9]+$'
             required
           />
         </S.BookingField>
@@ -41,15 +74,15 @@ const BookingModal = () => (
           <S.BookingLabel htmlFor="booking-people">
             Количество участников
           </S.BookingLabel>
-          <S.BookingInput
+          <S.BookingInput onChange={handleInputChange}
             type="number"
-            id="booking-people"
-            name="booking-people"
+            name="peopleCount"
             placeholder="Количество участников"
             required
+            min={1}
           />
         </S.BookingField>
-        <S.BookingSubmit type="submit">Отправить заявку</S.BookingSubmit>
+        <S.BookingSubmit type="submit" >Отправить заявку</S.BookingSubmit>
         <S.BookingCheckboxWrapper>
           <S.BookingCheckboxInput
             type="checkbox"
@@ -73,6 +106,7 @@ const BookingModal = () => (
       </S.BookingForm>
     </S.Modal>
   </S.BlockLayer>
-);
+)};
 
 export default BookingModal;
+

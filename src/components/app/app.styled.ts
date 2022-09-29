@@ -1,49 +1,49 @@
 import { createGlobalStyle } from 'styled-components';
-import { AppThemeType, styleFont } from './common';
+import { AppThemeType } from '../../types';
+import { FONT_PATH } from './common';
 
-// добавил экспорт AppThemeType
 
 const GlobalStyle = createGlobalStyle<{theme: AppThemeType}>`
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
-    src: url(${styleFont.RalewayRegularWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewayRegularWoff2}) format('woff2');
   }
 
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 500;
-    src: url(${styleFont.RalewayMediumWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewayMediumWoff2}) format('woff2');
   }
 
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 600;
-    src: url(${styleFont.RalewaySemiBoldWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewaySemiBoldWoff2}) format('woff2');
   }
 
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
-    src: url(${styleFont.RalewayBoldWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewayBoldWoff2}) format('woff2');
   }
 
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 800;
-    src: url(${styleFont.RalewayExtraBoldWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewayExtraBoldWoff2}) format('woff2');
   }
 
   @font-face {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 900;
-    src: url(${styleFont.RalewayBlackWoff2}) format('woff2');
+    src: url(${FONT_PATH.RalewayBlackWoff2}) format('woff2');
   }
 
   *,

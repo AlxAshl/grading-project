@@ -9,7 +9,8 @@ import Contacts from '../contacts/contacts';
 import Home from '../home/home';
 import { appTheme } from './common';
 import * as S from './app.styled';
-
+import {AppRoute} from '../../const'
+import { PageNotFound } from '../page-not-found/page-not-found';
 
 
 const App = (): JSX.Element => (
@@ -17,14 +18,17 @@ const App = (): JSX.Element => (
     <S.GlobalStyle />
     <Router>
       <Switch>
-        <Route exact path="/quest">
+        <Route exact path={AppRoute.Quest}>
           <DetailedQuest />
         </Route>
-        <Route exact path="/contacts">
+        <Route exact path={AppRoute.Contacts}>
           <Contacts />
         </Route>
-        <Route path="/">
+        <Route exact path={AppRoute.Root}>
           <Home />
+        </Route>
+        <Route path={AppRoute.Notfound}>
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
@@ -32,3 +36,4 @@ const App = (): JSX.Element => (
 );
 
 export default App;
+

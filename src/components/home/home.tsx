@@ -6,8 +6,15 @@ import {
 } from '../common/common';
 import { QuestsCatalog } from './components/components';
 import * as S from './home.styled';
+import { store } from '../../store'
+import { fetchQuestsAction } from '../../store/api-actions';
 
-const HomePage = () => (
+
+store.dispatch(fetchQuestsAction())
+
+const HomePage = () => {
+
+  return (
   <MainLayout>
     <S.Main forwardedAs="main">
       <PageHeading>
@@ -17,6 +24,6 @@ const HomePage = () => (
       <QuestsCatalog />
     </S.Main>
   </MainLayout>
-);
+)};
 
 export default HomePage;

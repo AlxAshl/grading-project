@@ -1,4 +1,4 @@
-const appTheme = {
+export const appTheme = {
   font: {
     mini: '12px',
     small: '13px',
@@ -27,7 +27,7 @@ const appTheme = {
   },
 };
 
-const styleFont = {// правильней будет написать через URL_FONT_BLAH
+export const FONT_PATH = {
   RalewayBlackWoff2: 'src/assets/fonts/raleway-black.woff2',
   RalewayRegularWoff2: 'src/assets/fonts/raleway-regular.woff2',
   RalewayMediumWoff2: 'src/assets/fonts/raleway-medium.woff2',
@@ -35,17 +35,7 @@ const styleFont = {// правильней будет написать чере�
   RalewayBoldWoff2: 'src/assets/fonts/raleway-bold.woff2',
   RalewayExtraBoldWoff2: 'src/assets/fonts/raleway-black.woff2'
 }
-const ICON_PATH = {
-  IconAllQuests: 'src/assets/img/icon-all-quests.svg',
-  IconAdventures: 'src/assets/img/icon-adventures.svg',
-  IconHorrors: 'src/assets/img/icon-horrors.svg',
-  IconMystic: 'src/assets/img/icon-mystic.svg',
-  IconDetective: 'src/assets/img/icon-detective.svg',
-  IconScifi: 'src/assets/img/icon-scifi.svg',
-  IconPerson: 'src/assets/img/icon-person.svg',
-  IconPuzzle: 'src/assets/img/icon-puzzle.svg'
-}
-// возможно весь этот конст вообще вытащить отсюда и перекинуть в отдельный фаил
-export type AppThemeType = typeof appTheme
 
-export { appTheme, styleFont, ICON_PATH };
+
+
+

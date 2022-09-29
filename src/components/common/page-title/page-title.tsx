@@ -3,7 +3,7 @@ import * as S from './page-title.styled';
 
 interface Props {
   children?: ReactNode
-}// добавил интерфейс для ТС-а
+}
 
 const PageTitle = ({ children, ...props }: Props) => (
   <S.PageTitle {...props}>{children}</S.PageTitle>

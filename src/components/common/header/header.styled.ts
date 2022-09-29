@@ -63,10 +63,11 @@ const LinkItem = styled.li`
     margin-bottom: 10px;
   }
 `;
-//<{$isActiveLink: boolean}>
+
 interface LinkWrapper {
   $isActiveLink: boolean
 }
+
 const Link = styled(RouterLink)<LinkWrapper>`
   display: block;
   max-width: 100px;
